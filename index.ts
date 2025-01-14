@@ -28,3 +28,26 @@ function create(post:Post): void {
 }
 
 create(newpost);
+
+
+//use of index key
+interface Student{
+   [key:string]: string|number|undefined|number[]
+    name:string,
+    gpa:number,
+    class?:number[]
+}
+const student: Student={
+name:'dave',
+gpa:3.4,
+class:[100,200]
+}  
+
+//here test is undefined still u can access using key in interface it just returns undefined
+console.log(student.test);
+ 
+//if u use keyof u dont need to use key in interface
+
+for(const key in student){
+    console.log(`${key}:${student[key as keyof Student]}`)
+}
