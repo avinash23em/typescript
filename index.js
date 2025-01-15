@@ -19,3 +19,11 @@ console.log(student.test);
 for (var key in student) {
     console.log("".concat(key, ":").concat(student[key]));
 }
+//generics
+var echo = function (arg) { return arg; };
+var isobj = function (arg) {
+    return (typeof arg == 'object' && !Array.isArray(arg) && arg != null);
+};
+console.log(isobj(false));
+console.log(isobj([1, 2, 3]));
+console.log(isobj(null));

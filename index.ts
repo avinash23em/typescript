@@ -51,3 +51,16 @@ console.log(student.test);
 for(const key in student){
     console.log(`${key}:${student[key as keyof Student]}`)
 }
+
+//generics
+
+const echo=<T>(arg :T):  T =>arg;
+
+const isobj=<T>(arg :T): boolean=>{
+    return (typeof arg=='object' && !Array.isArray(arg) &&arg!=null)
+}
+
+console.log(isobj(false));
+console.log(isobj([1,2,3]));
+console.log(isobj(null));
+
