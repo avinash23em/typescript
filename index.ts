@@ -64,3 +64,32 @@ console.log(isobj(false));
 console.log(isobj([1,2,3]));
 console.log(isobj(null));
 
+//ex 2
+
+interface BoolCheck<T> {
+    value: T,
+    is: boolean,
+}
+
+const checkBoolValue = <T>(arg: T): BoolCheck<T> => {
+    if (Array.isArray(arg) && !arg.length) {
+        return { value: arg, is: false }
+    }
+    if (isobj(arg) && !Object.keys(arg as keyof T).length) {
+        return { value: arg, is: false }
+    }
+    return { value: arg, is: !!arg }
+}
+
+
+
+
+interface HasID {
+    id: number
+}
+
+const processUser = <T extends HasID>(user: T): T => {
+    return user
+}
+
+console.log(processUser({ id: 1, name: 'Dave' }))

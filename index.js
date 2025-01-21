@@ -27,3 +27,16 @@ var isobj = function (arg) {
 console.log(isobj(false));
 console.log(isobj([1, 2, 3]));
 console.log(isobj(null));
+var checkBoolValue = function (arg) {
+    if (Array.isArray(arg) && !arg.length) {
+        return { value: arg, is: false };
+    }
+    if (isobj(arg) && !Object.keys(arg).length) {
+        return { value: arg, is: false };
+    }
+    return { value: arg, is: !!arg };
+};
+var processUser = function (user) {
+    return user;
+};
+console.log(processUser({ id: 1, name: 'Dave' }));
