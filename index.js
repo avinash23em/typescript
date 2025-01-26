@@ -31,7 +31,7 @@ var checkBoolValue = function (arg) {
     if (Array.isArray(arg) && !arg.length) {
         return { value: arg, is: false };
     }
-    if (isobj(arg) && !Object.keys(arg).length) {
+    if (isobj(arg) && Object.keys(arg).length == 0) {
         return { value: arg, is: false };
     }
     return { value: arg, is: !!arg };
@@ -39,4 +39,28 @@ var checkBoolValue = function (arg) {
 var processUser = function (user) {
     return user;
 };
-console.log(processUser({ id: 1, name: 'Dave' }));
+console.log(processUser({ id: 1, name: 'avi' }));
+//tuples once defined cannot be changed
+var tup = ['rav', 25, false];
+tup[0] = 'book';
+tup[1] = 30; //as it is number we cannot change into string or something in array it is possible
+console.log(tup);
+//enums
+var type;
+(function (type) {
+    type[type["book"] = 0] = "book";
+    type[type["director"] = 1] = "director";
+    type[type["film"] = 2] = "film";
+    type[type["producer"] = 3] = "producer";
+})(type || (type = {}));
+var doc = {
+    uid: 'one',
+    rid: type.film,
+    data: { title: 'name of book' }
+};
+var doc2 = {
+    uid: '2',
+    rid: type.producer,
+    data: 'tabla'
+};
+console.log(doc, doc2);
